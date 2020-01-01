@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="document_service_base_url">http://192.168.0.45:9080/api/v1/document/</string>
+  <string name="unsigned_document_endpoint">unsigned</string>
+  <string name="authorization_server_base_url">http://192.168.0.45:8080/auth/realms/zcorp/protocol/openid-connect/</string>
+  <string name="auth_endpoint">auth</string>
+  <string name="token_endpoint">token</string>
+  <string name="oauth2_client">android</string>
+  <string name="oatuh2_redirect_uri">contract-app://oauth2redirect</string>
+</resources>

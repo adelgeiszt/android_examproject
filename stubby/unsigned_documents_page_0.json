@@ -1,0 +1,99 @@
+{
+  "page": 0,
+  "limit": 5,
+  "queryTimestamp": "<% query.queryTimestamp[1] %>",
+  "results": [
+    {
+      "title": "Work contract",
+      "publicationTimestamp": "2019-11-16T15:04:23.903259Z",
+      "documentId": "54212c02-4816-4ac1-aeac-cfe0df1d1ffa",
+      "parties": [
+        {
+          "partnerId": "e4e05b07-cea1-483d-b857-feae72cc0433",
+          "signatureTimestamp": null,
+          "firstName": "William",
+          "lastName": "Blake"
+        },
+        {
+          "partnerId": "c0376fac-50d6-4d17-8f19-2bf77d501689",
+          "signatureTimestamp": "2019-11-16T16:04:23.903259Z",
+          "organization": "Hooks Ltd."
+        }
+      ]
+    },
+    {
+      "title": "Confidentiality agreement",
+      "publicationTimestamp": "2019-11-17T11:14:25.051944Z",
+      "documentId": "96facb7f-c772-4e39-ba1d-7a729e4ef38c",
+      "parties": [
+        {
+          "partnerId": "e4e05b07-cea1-483d-b857-feae72cc0433",
+          "signatureTimestamp": null,
+          "firstName": "William",
+          "lastName": "Blake"
+        },
+        {
+          "partnerId": "c0376fac-50d6-4d17-8f19-2bf77d501689",
+          "signatureTimestamp": "2019-11-17T12:14:25.051944Z",
+          "organization": "Hooks Ltd."
+        }
+      ]
+    },
+    {
+      "title": "Loan contract",
+      "publicationTimestamp": "2019-11-17T12:14:00.167043Z",
+      "documentId": "fe698033-6f45-414d-bdb8-06b0e868c868",
+      "parties": [
+        {
+          "partnerId": "e4e05b07-cea1-483d-b857-feae72cc0433",
+          "signatureTimestamp": null,
+          "firstName": "William",
+          "lastName": "Blake"
+        },
+        {
+          "partnerId": "44594bea-9afb-44c7-b5ef-fcbca9472329",
+          "signatureTimestamp": "2019-11-17T13:14:00.167043Z",
+          "organization": "OTP Zrt."
+        }
+      ]
+    },
+    {
+      "title": "Contract of sale Toyota Prius",
+      "publicationTimestamp": "2019-11-17T12:19:33.305037Z",
+      "documentId": "41aff2d7-0af9-4923-a7b4-28f749a58abe",
+      "parties": [
+        {
+          "partnerId": "e4e05b07-cea1-483d-b857-feae72cc0433",
+          "signatureTimestamp": null,
+          "firstName": "William",
+          "lastName": "Blake"
+        },
+        {
+          "partnerId": "dc4981c1-962d-4510-b53c-ec7576c1fc63",
+          "signatureTimestamp": "2019-11-17T13:19:33.305037Z",
+          "firstName": "Peter",
+          "lastName": "Parker"
+        }
+      ]
+    },
+    {
+      "title": "Contract of sale KTM Motorcycle",
+      "publicationTimestamp": "2019-11-17T12:25:32.875924Z",
+      "documentId": "db4c2fa9-e767-43ee-9ba2-43fe8f45bd21",
+      "parties": [
+        {
+          "partnerId": "e4e05b07-cea1-483d-b857-feae72cc0433",
+          "signatureTimestamp": null,
+          "firstName": "William",
+          "lastName": "Blake"
+        },
+        {
+          "partnerId": "17f1b8db-8f44-4e5a-9246-973107886b68",
+          "signatureTimestamp": "2019-11-17T13:25:32.875924Z",
+          "firstName": "Jane",
+          "lastName": "Doe"
+        }
+      ]
+    }
+  ]
+}

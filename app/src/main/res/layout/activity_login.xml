@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/bg">
+
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:gravity="center"
+    android:layout_alignParentTop="true"
+    android:layout_above="@id/input_group">
+    <ImageView
+      android:id="@+id/imageView2"
+      android:layout_width="80sp"
+      android:layout_height="100sp"
+      app:srcCompat="@drawable/wealth" />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="sans-serif"
+      android:text="SIGN IN"
+      android:textColor="#FFFFFF"
+      android:textSize="20sp" />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="sans-serif"
+      android:text="Lorem ipsum dolor sit amet."
+      android:textColor="#FFFFFF"
+      android:textSize="16sp" />
+
+  </LinearLayout>
+
+
+  <LinearLayout
+    android:id="@+id/input_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginBottom="50dp"
+    android:layout_alignParentBottom="true"
+    android:gravity="center">
+
+
+    <EditText
+      android:id="@+id/username"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/edit_text_top"
+      android:hint="Username"
+      android:inputType="textPersonName"
+      android:padding="15dp" />
+
+    <EditText
+      android:id="@+id/password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/edit_text_bottom"
+      android:hint="Password"
+      android:inputType="textPassword"
+      android:padding="15dp" />
+
+
+    <Button
+      android:id="@+id/login"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:background="@drawable/button"
+      android:foreground="?android:attr/selectableItemBackground"
+      android:text="SIGN IN"
+      android:textAllCaps="false"
+      android:textColor="#B3776F77"
+      android:textSize="17sp" />
+
+
+  </LinearLayout>
+
+</RelativeLayout>

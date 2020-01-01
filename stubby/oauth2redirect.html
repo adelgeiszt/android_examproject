@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="" name="description">
+  <meta content="" name="author">
+
+  <title>OpenId Connect Auth Code Flow + PKCE - Debugger</title>
+
+  <!-- Bootstrap core CSS -->
+  <link crossorigin="anonymous"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">OpenId Connect Auth Code Flow + PKCE - Debugger</a>
+    <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarResponsive" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/login.html">Login
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row mt-5" id="formRow">
+    <div class="col-lg-12 text-center">
+      <form action="http://localhost:8080/auth/realms/zcorp/protocol/openid-connect/token"
+            id="accessTokenForm"
+            method="post">
+        <input name="grant_type" type="hidden" value="authorization_code"/>
+        <input name="code" type="hidden"/>
+        <input name="redirect_uri" type="hidden" value="http://localhost:8882/oauth2redirect.html"/>
+        <input name="client_id" type="hidden" value="android"/>
+        <input name="code_verifier" type="hidden"/>
+        <button class="btn btn-primary" id="getAccessTokenBtn" type="submit">Get access token
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-5" id="tokenRow" style="display: none">
+    <div class="col-lg-12 text-left"><h2>Access token</h2></div>
+    <div class="col-lg-12 text-right">
+      <textarea class="form-control" id="tokenTextarea" readonly rows="16">
+      </textarea>
+      <form action="http://localhost:8080/auth/realms/zcorp/protocol/openid-connect/token"
+            id="refreshTokenForm"
+            method="post">
+        <input name="grant_type" type="hidden" value="refresh_token"/>
+        <input name="client_id" type="hidden" value="android"/>
+        <input name="refresh_token" type="hidden"/>
+        <button class="btn btn-secondary mt-2" id="refreshBtn" type="submit">Refresh</button>
+        <button class="btn btn-primary mt-2" id="copyBtn" type="button">Copy</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script
+    crossorigin="anonymous"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="base64js.min.js"></script>
+<script src="encoding-indexes.js"></script>
+<script src="encoding.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    let formRow = $('#formRow');
+    let tokenRow = $('#tokenRow');
+
+    let refreshTokenForm = $('#refreshTokenForm');
+    let accessTokenForm = $('#accessTokenForm');
+    let tokenTextarea = $('#tokenTextarea');
+    let getAccessTokenBtn = $('#getAccessTokenBtn');
+
+    let codeInput = $('input[name="code"]');
+    let codeVerifierInput = $('input[name="code_verifier"]');
+    let refreshTokenInput = $('input[name="refresh_token"]');
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let state = urlParams.get('state');
+
+    if (state === localStorage.getItem('state')) {
+      codeInput.val(urlParams.get('code'));
+      codeVerifierInput.val(localStorage.getItem('verifier'));
+    } else {
+      getAccessTokenBtn.prop('disabled', true);
+      getAccessTokenBtn.addClass('disabled');
+      console.error("Mismatching state");
+    }
+
+    accessTokenForm.submit(function (e) {
+
+      e.preventDefault();
+
+      let form = $(this);
+      let url = form.attr('action');
+
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: form.serialize(),
+        success: function (data) {
+          tokenTextarea.val(data['access_token']);
+          refreshTokenInput.val(data['refresh_token']);
+          formRow.css('display', 'none');
+          tokenRow.css('display', 'flex');
+        }
+      });
+
+    });
+
+    refreshTokenForm.submit(function (e) {
+
+      e.preventDefault();
+
+      let form = $(this);
+      let url = form.attr('action');
+
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: form.serialize(),
+        success: function (data) {
+          tokenTextarea.val(data['access_token']);
+          refreshTokenInput.val(data['refresh_token']);
+          formRow.css('display', 'none');
+          tokenRow.css('display', 'flex');
+        }
+      });
+
+    });
+
+    $('#copyBtn').click(function () {
+      tokenTextarea.select();
+      document.execCommand("copy");
+    });
+  });
+
+
+
+
+
+</script>
+</body>
+</html>

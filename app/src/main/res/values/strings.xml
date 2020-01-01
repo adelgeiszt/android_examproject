@@ -1,0 +1,14 @@
+<resources>
+  <string name="app_name">examProject</string>
+  <string name="title_home">Unsigned contracts</string>
+  <string name="title_dashboard">Signed contracts</string>
+  <string name="title_notifications">Account</string>
+  <string name="title_activity_login">Sign in</string>
+  <string name="prompt_email">Username</string>
+  <string name="prompt_password">Password</string>
+  <string name="action_sign_in">Sign in</string>
+  <string name="login_failed">Invalid username or password</string>
+  <string name="biometric_signature_access_title">Biometric authentication for digital signature</string>
+  <string name="biometric_signature_access_subtitle">Log in using your biometric credential</string>
+  <string name="biometric_signature_access_navigate_btn_txt">Use account password</string>
+</resources>

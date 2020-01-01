@@ -1,0 +1,37 @@
+{
+  "page": 1,
+  "limit": 5,
+  "queryTimestamp": "<% query.queryTimestamp[1] %>",
+  "results": [
+    {
+      "title": "Group settlement",
+      "publicationTimestamp": "2019-11-15T11:36:23.904255Z",
+      "documentId": "44cad18f-0c2f-43d9-8a0f-a8995bd07b56",
+      "parties": [
+        {
+          "partnerId": "e4e05b07-cea1-483d-b857-feae72cc0433",
+          "signatureTimestamp": null,
+          "firstName": "William",
+          "lastName": "Blake"
+        },
+        {
+          "partnerId": "dc4981c1-962d-4510-b53c-ec7576c1fc63",
+          "signatureTimestamp": "2019-11-15T12:50:54.297038Z",
+          "firstName": "Peter",
+          "lastName": "Parker"
+        },
+        {
+          "partnerId": "17f1b8db-8f44-4e5a-9246-973107886b68",
+          "signatureTimestamp": null,
+          "firstName": "Jane",
+          "lastName": "Doe"
+        },
+        {
+          "partnerId": "c0376fac-50d6-4d17-8f19-2bf77d501689",
+          "signatureTimestamp": "2019-11-15T12:41:54.297038Z",
+          "organization": "Real Care Ltd."
+        }
+      ]
+    }
+  ]
+}
